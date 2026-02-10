@@ -1,0 +1,562 @@
+Title:
+The Product-Minded Engineer in the Age of AI-Driven Development
+
+Description:
+A product-minded engineer goes beyond implementing tickets; they understand users, question assumptions, propose better solutions, and help shape the product’s direction. We'll also discuss why this way of thinking is even more essential in the age of AI-driven development, where routine tasks become automated and the real value lies in understanding problems, guiding decisions, and building the right outcomes.
+
+__________________________
+
+Product-minded engineer VS
+
+Product-driven (mindest) engineer
+Product-focused engineer
+Product software engineer
+Product engineering
+__________________________
+
+"Good engineering isn’t just about coding, it’s about asking the right questions."
+
+"Good engineering is not about execting tasks, but asking the right questions, challenging assumptions and understanding the bigger picture."
+
+__________________________
+
+Треба да се навлезе длабоко во индустријата, домејнот, за да се сфати со кои проблеми корисниците се соочуваат, па потоа да се пристапи кон решавање на тие проблеми
+
+__________________________
+
+Software engineering education
+
+It's not only about writing code
+It's teaching about how to break complex problems into steps
+Think logically and critically
+And harness the digital tools to build solutions that really matters
+
+Future education
+
+In order to become a successfull engineer in the future we should focus on master the foundations:
+- the data structures
+- the algorithms
+- the programming concepts
+...
+
+__________________________
+
+1. Being product-minded is what separates decent software engineers from great ones at startups and Big Tech. This book is the missing guide on how to get better in this highly impactful area: how to get more “product-minded” and help your company, your team, and yourself succeed. 
+2. In an age where AI handles the syntax, engineers who master user empathy and product thinking will define the future of software. 
+3. The artificial split between product and engineering wastes so many hours and opportunities. When delay is expensive, avoiding a handoff is valuable. If your programmer can make good enough product decisions for now, you increase your chances of survival. 
+4. AI coding assistants and agents now do a lot of heavy lifting for us, taking care of small details so we can focus more on other topics. Topics like product thinking.
+5. Product engineering in software engineering blends technical excellence with customer-centricity, moving beyond code delivery to solving real user problems.
+
+_____________________________
+
+Soft skills
+
+Learn how to express yourself, if you can explain and connect it will become increasingly important and it will set you apart.
+
+_____________________________
+
+
+Product software engineer skills
+
+A product software engineer needs a variety of technical skills as well as strong soft skills to be effective. Some of the skills a product software engineer uses include:
+
+1. Strong interpersonal communication
+2. Time management skills
+3. Knowledge of programming languages
+4. Problem-solving skills
+5. Ability to analyze data effectively
+6. Excellent team player
+7. Understanding of user needs
+8. Strong knowledge of software engineering processes
+__________________________
+
+https://www.atlassian.com/agile/product-management/product-engineering
+
+The traditional software engineering model
+vs
+The product engineering continuous loop
+
+----
+
+The traditional software engineering model
+
+In the traditional model, development follows a linear path. Requirements flow down from product management through design to engineering teams who implement them. Think of it as a relay race, where each team passes the baton to the next.
+- Requirements documents took months to create and approve
+- Engineers coded to exact specifications
+- Testing and deployment came at the end
+- Customer feedback was filtered through multiple layers
+
+--
+
+The product engineering continuous loop
+
+Instead of treating development as a relay race, we now operate more like a soccer team - everyone moves together, adapts to changing conditions, and keeps their eye on the goal of delivering customer value.
+- Engineers join customer interviews and discovery sessions
+- Technical decisions are validated against customer needs
+- Deployment becomes a learning opportunity, not just a delivery milestone
+- Teams measure success through customer impact, not just technical metrics
+
+--
+
+From implementation to ownership
+- Participate in problem definition and solution exploration
+- Bring technical perspectives to early discussions
+- Validate assumptions directly with customers
+- Own feature outcomes beyond just code quality
+- Track business metrics and market impact
+
+__________________________
+
+Unlike traditional software engineers who may focus primarily on technical implementation, product engineers are deeply involved in understanding user problems, analyzing user behavior, and making product decisions based on data and user feedback.
+
+__________________________
+
+Going beyond the code
+
+We must focus on the ultimate goal why we're programming? - to satisfy the users needs.
+
+Good software solves the problem customer have. But also in timely manner. (example: you've solved the problem but the customer don't need it anymore - then it's waste)
+
+---
+
+Tech Can Be Sexy
+- Learning new frameworks (react, vue...)
+- Applying latest designs and patterns
+- Implementing High-scale resilient services (service bus, etc...)
+
+BUT shipping is sexier!!!
+(getting the product out of the door, getting that feedback from the user)
+
+In the end, what is the technology if you're not solving any user need...
+
+Спореди го ова со 3shape, дека сте работеле на многу иновативен продукт, со вакви/такви алгоритми, со 3д графика итн итн, епент tech-savy / nerd работи -> ама најубав осеќај било кога не носеле во dental clinic да видиме како стоматолог го користи нашиот софтвер и дава забелешки!!!
+
+__________________________
+
+Most of the software engineers think like engineers, they like to build stuff.
+Talking to customer and understanding the customer's problem is a whole different kind of skill - it revolves actually talking ot people and this is a problem for lot of the engineers, because let's be honest, they are introverts, they want to be closed in a dark room and working on a problem without a human being distracting them..
+(leaving me alone, I'm trying to concentrate - mindset)
+Most of the enigneers are siting in a cubicles in some corner and they get fed requirements all day, so they are so lost from the real world.
+
+If you're expecting to work on a ticket, or just writing code without understanding what problem you're solving it's same like working on an assembly line in a factory (someone gives all the requirements to you, and you're just producing code).
+
+Most of the engineers are really smart and tech people, but our users are not us, they are maybe not tech people, so we must use their eyes and try to undestand how they are trying to achive the goal for the issue they have (the most simple approach).
+
+---
+
+Example, you're a junior software engineer and you're given requirements, tasks. How to become product-minded?
+
+Be curious (have empathy, care), ask questions!
+- Why are we doing this?
+- Who are we doing this for?
+- How is this gonna help them?
+- How the customers are using this?
+
+After shiping it, follow with questions.
+- How did it go?
+- What do customers think?
+- What do we learned from the deployment? 
+- Do they like it, do they have some feedback?
+- How can we improve it?
+
+---
+
+Other questions
+
+- Who are our users?
+- What problem do we solve?
+- What is our unique value proposition? Or: What is our competitive advantage?
+- How do we measure success?
+- What is our business model?
+- What are the existing alternatives?
+
+---
+
+The problem is often comming from the leadership. Leadership has to make time for this and encorage this and push the team having these conversations.
+Often the leadership want to split all these roles, even split the dev roles like: backend, frontend, db, etc...  So not only to split the product / tech roles. The leadershp wants to them to talk to less people and write more code.
+
+But however, if you start this by yourselves, I don't belive someone from the leadership will tell you "Shut up and just write code"!
+I think everyone will respect that extra step.
+
+---
+
+You can have the best code, the greatest application. But if you don't have customers, it is a waste. So finding customers and understanding their needs and problems that they want to solve is the hardest part (yes engineering the best code is hard part, but working with customers that needs to pay is harder).
+
+---
+
+AI writes alone prototype, demo apps, boilerplate, small things that could be vibe-coded. But it won't write you alone enterprise application. But it will help you a lot in the enterprise applications, the AI will be doing the boring stuffs (create me model, create an endpoint, create unit tests, etc...) - so that gives us more time to focus on the product (just an assitance that makes place for product thinking).
+
+---
+
+Engineers are missing deep industry knowledge, and that is from where the big money is comming.
+Example: When they are building a software (their own pet project), the engineers are building software that is solving their specific problems.
+
+
+https://www.youtube.com/watch?v=mPa8H91DuUY
+
+----
+
+product mindset for engineers
+
+moving beyond just code to focus on user value, business goals, and the entire product lifecycle, involving traits like customer empathy, proactive problem-solving, data-driven decisions, and cross-functional collaboration to build impactful, not just functional, products
+
+https://productdriven.com/
+https://productdriven.com/book
+
+Why Engineers Need Product Thinking
+https://www.youtube.com/watch?v=v9zO7dWOPmI
+
+How AI Is Really Impacting Developer Experience
+https://www.youtube.com/watch?v=w6QkYnxiAhI
+
+How to build a product-driven engineering team
+https://www.youtube.com/watch?v=nfuVb9OOi5k&t=1000s
+
+__________________________
+
+Product engineers
+
+https://sherifmansour.medium.com/product-engineers-f424da766871
+video: https://www.youtube.com/watch?v=OCP_HEhvIqM
+
+__________________________
+
+product mindset for engineers
+
+Explanation of the 9 traits from the Gergely Orosz article
+https://medium.com/system5-dev/engineering-product-mindset-explained-8c80461d24fb
+
+__________________________
+
+How to become a Product-Minded Engineer
+
+https://edward-huang.com/best-practice/jobs/management/life-lesson/2021/08/31/how-to-become-a-product-minded-engineer/?utm_source=chatgpt.com
+
+__________________________
+
+Who is Product Engineer
+
+https://hackernoon.com/who-is-product-engineer-cl4l3yiu
+__________________________
+
+The user of your product is your hero. As in a work of fiction, you are rooting for the hero to get to the end and accomplish their goal.
+
+__________________________
+
+The benefits of getting developers involved in the entire lifecycle of the product:
+
+Software developers should be seen as consultants, and not just another cog in a machine, because they have a valuable role to play in the success of the product.
+
+If software developers can understand the business better, Dawid explains, then they can start to ask “why” more.
+They can critique the requirements and design and learn more about where the project fits into a business’ overall aims.
+
+---
+
+Why data-driven decisions are so important in product engineering:
+
+Data-driven decision-making is about stripping out the emotion from decisions and looking at the cold hard facts.
+
+---
+
+What developers can learn about the product users:
+
+Developers can also keep a check on the audience and their behaviors by regularly reviewing user analytics. Google Analytics and monitoring the error reporting tools are key.
+
+---
+
+What a Product Engineering Mindset Can Teach Software Developers
+https://www.netguru.com/blog/product-engineering-mindset-software-developers
+
+__________________________
+
+Adopting the Product Mindset
+
+- Ask Questions - Dig into the rationale behind prioritization decisions. PMs should be able to explain the inputs and tradeoffs.
+
+- Focus on Customer Value - Evaluate your work not just on technical merit, but on how it impacts end users. 
+
+- Suggest Improvements - Don't be shy about proposing better solutions - whether architecture changes or faster ways to validate ideas. 
+
+- Highlight Constraints - Provide visibility into technical limitations that might affect future plans so PMs can plan accordingly.
+
+- Care About Adoption - Think about downstream activities to drive user engagement, not just getting features launched.
+
+https://www.superset.com/blogs/the-product-mindset-for-engineers
+
+__________________________
+
+Product driven book
+My notes:
+1. this book is too product oriented, it ignores the engineering principles of writing a clean code
+2. the whole focus in this book is on the customer/client
+3. this is not engineering related (it's team related)
+
+**As** someone working with a software engineering team,
+**I want** the team to take more ownership and connect with the why behind the work,
+**So we can** start building what matters
+
+The engineers that clients loved most had something else going for them.
+- They were the ones who would speak up, ask questions, and collaborate on the work. They took
+ownership, even when it wasn't their job to.
+
+The engineers who struggled?
+- They followed the requirements without questioning them. They did
+exactly what they were told, and not much more.
+
+When that question shows up, especially from someone who didn’t “need” to ask it, things start to shift.
+People begin to care again. Not just about what they’re building, but why it matters.
+
+AI is accelerating everything. Speed isn’t enough anymore. You need clarity, judgment, and a team that
+can think.
+
+When Product Thinking Is Missing
+- Teams celebrate features shipped, not problems solved
+- Teams ship features without learning whether they matter
+- Retrospectives focus on blockers and process, not real-world results
+- Leadership conversations center on roadmaps and deadlines, not customer success
+- Teams move faster but further from what really matters
+- Engineers stop questioning the work
+- Roadmaps create momentum that feels too late to challenge
+- Decisions are made without real strategy
+- Engineers assume user confusion is a user problem
+
+
+It's easy to keep building. It’s much harder to stop and ask if you’re building the right thing. Nobody
+wants to be the one who stops the train. But if we never ask why, we risk building in the wrong
+direction.
+
+Hold on. Why are we doing this?
+- It’s not rebellion. It’s ownership. It’s how you interrupt momentum to make a better decision.
+
+Why Engineers Got Boxed Into “Just Build It”
+
+- In the name of efficiency, we separated the thinkers from the builders. Product teams wrote the
+requirements. Managers tracked the work. Your engineers just executed.
+It looked clean on paper. It promised predictability and scale. It came at a cost.
+We disconnected the people building the product from the people it was supposed to serve.
+When you can’t see who you’re helping, it gets easier to stop understanding your purpose, and
+eventually, to stop caring.
+Your engineers weren’t told to stop thinking. But typical engineering culture trained them to think
+about code, not customers.So they learned to focus on velocity and stop asking why.
+
+Most engineers didn’t get into this field to write code for other people’s checklists. They got into it to
+solve real problems.
+Solving problems takes context. It takes the freedom to pause, ask questions, and understand the
+outcome you are building toward.
+Engineers feel connected to the work. The code has context. The effort has purpose. That's what
+makes engineering meaningful.
+
+Stop seeing users as a burden and start treating their pain like it’s your problem.
+Users aren’t the problem.
+The customer is always right.
+They’re actually the reason you have a job. - They’re the reason we’re here.
+
+
+The moment teams stop caring whether people understand the product, they start building something
+people struggle to use.
+Some users blame themselves. Others blame
+the product. Either way, they walk away thinking it wasn’t built for them.
+Empathy isn’t a nice-to-have. It’s a requirement. It’s the discipline of paying attention to where
+people struggle, and why.
+The goal isn’t “It works on my machine.”
+The goal is “It works for the users.”
+
+They’re Not You, and That’s the Point
+“If it works for me, it’ll work for them.”
+We assume our users think like we do. But they don’t. That’s why their perspective is so valuable.
+
+Build like it’s for your own kids.
+Not because users need to be coddled. Because great software comes from care, not just competence.
+You wouldn’t hand your kid an app and say, “Figure it out.” Sure, kids figure out tech fast. But you’d
+still want them to feel confident, not confused. You’d make it clear, trustworthy, and forgiving enough
+to recover from mistakes
+
+Solving a real problem and seeing it help someone.
+That feeling was electric.
+
+Ask questions. Listened.
+Don't waiting for instructions and use all of the problem-solving and creative skills.
+
+Product Thinking Isn’t Optional Anymore
+- AI didn’t create this problem, but it’s speeding everything up. Building is faster than ever, and that
+speed has a cost.
+- When anyone can build, the bottleneck isn’t engineering, it’s knowing what to build. And when
+execution gets cheaper, strategy becomes the real differentiator. Not code.
+
+_____________________________
+
+
+Common Misconceptions and Anti-Patterns
+
+- Product Minded ≠ Product Manager
+Engineers do not replace PMs; they complement them.
+
+- Product Minded ≠ Saying “Yes” to Everything
+In fact, product-minded engineers often advocate for less.
+
+- Product Minded ≠ Overengineering
+Focus on minimal solutions that deliver value.	
+
+- Product Minded ≠ Code Quality doesn't Matter
+Focus on minimal solutions that deliver value.
+
+______________________________
+______________________________
+
+AI PART
+
+______________________________
+______________________________
+
+
+Stay adaptive
+
+Tools changes
+
+Focus on learning how to learn
+
+Be a leader, who not only lead the humans but also lead AI
+
+_____________________________
+
+И на ова можеш да се надоврзеш на Ai и llm. Дека никогаш пишувањето код не било проблемот. Туку разбирањето на продуктот, requirements и како тоа да се имплементира на добар начин што нема да прави главоболки пола година од денот на имплементацијата
+
+_____________________________
+
+
+Make a parallel of Ai tools with stack overflow and Google search.
+Thar in the past we were often using these tools, but now it seems like we have these tools integrated in our IDEs, and they are like stack overflow on steroids that almost always founds the solution we need. It spends much time, that we were losing on searching through answers and results
+
+_____________________________
+
+
+2021-2022 My CleanCode presentation
+- Kujtesa's 2021 message: But there is a software that is writing code and developing software (before LLM, only when the old simple GitHub Copilot existed).
+
+"There will be code" section from Uncle Bob
+
+This is written in 2008
+https://sites.google.com/site/unclebobconsultingllc/there-will-be-code
+
+But updated in 2025!!! (included AI, LLM, prompts - but idea is still the same)
+https://learning.oreilly.com/library/view/clean-code-a/9780135398586/ch01.xhtml#ch01lev1sec1
+
+Someone will say that the code is no longer the issue! That we should be concerned about models and requirements instead. Indeed some have suggested that we are close to the end of code. That soon all code will be generated instead of written (GitHub Copilot). The programmers won't be needed because business people will generate programs from specification.
+
+NONSENSE! We will NEVER be rid of code, because code represents the details of the requirements. 
+
+Remember that code is really the language in which we ultimately express the requirements. We may create languages that are closer to the requirements. We may create tools that help us parse and assemble those requirements into formal structures. But we will never eliminate necessary precision - so there will always be code.
+
+BTW: Uncle Bob's teaching is more engineering centric (not product centric). But he also agree that the engineer must understand the business, the domain (but the product sucess is manager's job).
+
+__________________________
+
+Software engineering is not only about writing code. Actually it never was that in the history...
+
+Software engineering before AI was only 5-10% writing code...
+40% reading code.
+It was 30% understanding the requirements (the user needs).
+20% testing code...
+
+Тука аналогијата со маичката
+I'm an enginee..
+...
+I write code.
+
+__________________________
+
+Remember the words of Guido van Rossum, creator of Python: “Code is read much more often than it’s written.”
+
+__________________________
+
+In the future there will be no something like "backend" or "frontend" developer. No more IT "experts", we'll need IT "generalists" (T-shape) -> they will be the product engineers.
+
+Now all the engineers will be full-stack engineers. Also be prepared to wear multiples hats : design, data, product.
+
+__________________________
+
+Why the software engineers are still needed?
+
+Because we understand the models best, we understand what's under the hood, the models, the data, the pipelines, the limitations and the risks.
+We could make human talk with them about technology, we both will understand one another.
+
+Everybody can build a demo/prototype software now.
+But only the software engineers could build reliable, maintainable, scalable software.
+
+https://www.youtube.com/watch?v=w4rG5GY9IlA
+
+https://www.youtube.com/watch?v=UnSXIQTUcXo
+
+__________________________
+
+History ??? - is this valid?
+
+1. 80 years ago, software engineers (ENIAC programmers) working with punched card
+2. 50 years ago, software engineers writing in assembly, low level
+3. 20 years ago, software engineers focused strictly technical
+4. Now, we got lot of help from the technologies, resources, AI - so we could focus more on the product
+(that means smaller teams, focus on fast delivery and quick respnse from the users - faster A/B testing?)
+
+So
+punched card -> assembly -> old programming languages (cobol, C - hard, not close to human language) -> new ones (like python, close to human languages, like pseudo code) -> human language
+
+more and more higher abstractions
+
+- That means today, the engineers must focus ALSO on soft skills, must escape that dark room / escape from the cave and have a conntact with people (let me just code and nothing else, doesn't work anymore)
+
+__________________________
+
+AI will handle all that repetitive coding (the boring stuff). Like the shitiest AI model could write now an API, create a web page, write a SQL code.
+So now we should not spent soo much time writing an API and think WOW I've done so much... No, you'll just have the idea, what kind of API to create, how to connect it, you have the big picture of the system (you see here, you're still technical person, you're still leading the process... AI is just helping with the boring things).
+
+
+AI accelerates code production, but code was never the bottleneck. Review, CI/CD, incident response - those were. 3x the code just 3x's the queue at every downstream stage.
+
+**Jevons Paradox** (increased efficiency in using a resource often leads to increased, not decreased, overall consumption of that resource because it becomes cheaper and more accessible, boosting demand)
+
+AI saves time. That time immediately gets filled with more scope.
+
+AI is raising the bar, not shrinking work. Better tools usually fuel competition, not rest, and effort just shifts.
+
+The software engineer will take the messy problems and guide the machines (AI) to solve these.
+
+__________________________
+
+In the age of AI-driven development, Agile creates bottlenecks that
+slow innovation. Waiting for product, waiting for several stakeholders. This is why engineers need product mind. Because the AI will speed the devilery and the engineers will wait for requirements.
+
+Traditional agile processes
+can create bottlenecks that limit their ability to scale innovation quickly
+and that the rise of agentic AI is highlighting the limitations of these
+methodologies as an approach to innovation and execution
+
+__________________________
+
+AI isn’t replacing entire engineers; it’s replacing what they’ve traditionally done. Boilerplate, repetitive tasks, and basic feature scaffolding are handed over to the machines.
+
+At companies like Amazon and Microsoft, generative AI now produces about 25% of their code, (1) and you can’t argue that’s not reshaping software teams in real time. 
+
+But we must have in mind that coding is a small part of the engineering job!!!!
+
+The role of engineers will shift toward higher-level design, problem-solving, and guiding AI.
+
+The AI can replace only the "coders", the ones that writes only code and nothing else (but not sure if there is someone like that).
+
+However, with this AI help/assistance the role of engineers will shift toward higher-level design, problem-solving, and guiding AI.
+
+For decades, new tools have emerged to automate parts of coding (from compilers to code libraries), yet experts say the demand for skilled engineers has only increased. The introduction of AI follows this pattern. 
+
+"AI is like having a very eager junior developer on your team... they can write code quickly, but they need constant supervision and correction."
+Or like I'm saying
+"AI is like a junior on 10 redbulls that is writing code with light speed, but writes only what is requested from him and not having the big picture - this is where you need to lead him through the process (monitor and suppervise)".
+
+Beyond coding: Writing code is only part of a software engineer’s job. Engineers also engage in high-level tasks like architectural design, 
+product analysis, user research, and problem-solving that go far beyond typing out functions. They make judgment calls about product features, trade-offs, and system constraints. These are the things that require understanding context and human needs. Most software engineers do far more than churn out code”; they design products, choose product stacks, troubleshoot complex issues, gather user feedback, and more. AI currently has no genuine understanding of real-world context or customer needs. It cannot truly replace the creative and design thinking of a human developer.
+
+https://productschool.com/blog/artificial-intelligence/will-ai-replace-software-engineers
+
+__________________________
+
+What Vibe Coding Actually Enabled
+
+https://www.linkedin.com/pulse/ceiling-has-collapsed-what-vibe-coding-actually-goran-jordanoski-tmm8f/
