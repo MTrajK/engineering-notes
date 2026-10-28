@@ -4,13 +4,13 @@ All the resources that will be used during the workshop.
 
 ## Setup & Exercise Resources
 
-Setup document: [Workshop - SDD with Windsurf+SpecKit.docx](/Resources/Workshop%20-%20SDD%20with%20Windsurf+SpecKit.docx)
+Setup document: [Resources/Workshop - SDD with Windsurf+SpecKit.docx](/Resources/Workshop%20-%20SDD%20with%20Windsurf+SpecKit.docx)
 
 All the resources used in the exercises are located in [Resources](/Resources/) folder, grouped by the section's number and the name of the exercise. 
 
 ### Playwright Installation Issue
 
-If ```npx playwright install chromium``` does not work even after the proposed solution in the document with uninstall/install, then just download the **ms-playwright.zip** from [Installation](/Resources/Installation/) folder and extract it into ```%USERPROFILE%\AppData\Local\```.
+If ```npx playwright install chromium``` does not work even after the proposed solution in the document with uninstall/install, then just download the **ms-playwright.zip** from [Resources/Installation](/Resources/Installation/) folder and extract it into ```%USERPROFILE%\AppData\Local\```.
 
 ***Note:** the Playwright installation (```npx playwright install chromium```) is just an extraction of 4 packages (or if you want you could download all these 4 files one by one and extract them into ```%USERPROFILE%\AppData\Local\ms-playwright```):*
 1. **chromium-1223** downloaded from: https://cdn.playwright.dev/builds/cft/148.0.7778.96/win64/chrome-win64.zip
@@ -26,6 +26,6 @@ If ```npx playwright install chromium``` does not work even after the proposed s
 
 ## Trainers Resources
 
-All the trainers resources are located in [Trainers](/Resources/Trainers/) folder. There you could find:
+All the trainers resources are located in [Resources/Trainers](/Resources/Trainers/) folder. There you could find:
 1. The detailed guide: [Workshop Trainers Guide - SDD with Windsurf+SpecKit.docx](/Resources/Trainers/Workshop%20Trainers%20Guide%20-%20SDD%20with%20Windsurf+SpecKit.docx)
 2. The slides/presentation: [Workshop Presentation - SDD with Windsurf+SpecKit.pptx](/Resources/Trainers/Workshop%20Presentation%20-%20SDD%20with%20Windsurf+SpecKit.pptx)
