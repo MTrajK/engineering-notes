@@ -1,0 +1,12 @@
+.shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(29, 109, 95, 0.12), transparent 24rem),
+    linear-gradient(180deg, var(--color-surface-muted), var(--color-bg));
+}
+
+.main {
+  width: min(72rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}

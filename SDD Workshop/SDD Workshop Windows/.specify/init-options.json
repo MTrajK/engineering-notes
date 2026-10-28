@@ -1,0 +1,9 @@
+{
+  "ai": "windsurf",
+  "branch_numbering": "sequential",
+  "context_file": ".windsurf/rules/specify-rules.md",
+  "here": true,
+  "integration": "windsurf",
+  "script": "ps",
+  "speckit_version": "0.8.3.dev0"
+}
