@@ -1,4 +1,4 @@
-# SK SDD Workshop Resources
+# SK SDD Workshop
 
 All the resources that will be used during the workshop.
 
@@ -10,7 +10,7 @@ All the resources used in the exercises are located in [Resources](/Resources/) 
 
 ### Playwright Installation Issue
 
-If ```npx playwright install chromium``` does not work even after the proposed solution in the document with uninstall/install, then just download the **ms-playwright.zip** from [Resources/Installation](/Resources/Installation/) folder and extract it into ```%USERPROFILE%\AppData\Local\```.
+If ```npx playwright install chromium``` does not work even after the proposed solution in the document with uninstall/install, then just download the 4 packages explained below and extract it into ```%USERPROFILE%\AppData\Local\```.
 
 ***Note:** the Playwright installation (```npx playwright install chromium```) is just an extraction of 4 packages (or if you want you could download all these 4 files one by one and extract them into ```%USERPROFILE%\AppData\Local\ms-playwright```):*
 1. **chromium-1223** downloaded from: https://cdn.playwright.dev/builds/cft/148.0.7778.96/win64/chrome-win64.zip
