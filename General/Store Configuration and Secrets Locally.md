@@ -68,6 +68,8 @@ dotnet user-secrets set "Parameters:Name" "Value"
 
 When the .NET app is started, these values will be available through IConfiguration (also these values will override the values provided through ```appsettings.json```).
 
+***Note:*** *This does not work for ```appsettings.local.json``` (work only for the development values - ```appsettings.development.json``).*
+
 
 ## setx
 > .NET and Node.JS development environment variables storage
@@ -81,7 +83,7 @@ Store
 setx MY_SECRET "value"
 ```
 
-Read (note: needs to open a new terminal, so the new terminal will read from the registry)
+Read (note: needs to open a new terminal, so the new terminal will read from the registry - the terminal must be restarted first)
 ```powershell
 $env:MY_SECRET
 ```
@@ -98,10 +100,46 @@ Read (available only in the same terminal where stored)
 $env:MY_VAR
 ```
 
+This one stores temporary too
+```powershell
+set MY_VAR="my_value"
+```
+
+Read
+```powershell
+echo %MY_VAR%
+```
+
 Available only from the apps that are started in the same shell:
 - ```dotnet run``` (accessed through IConfiguration)
 - ```npm start``` (accessed through process.env)
 
+## [Environment]::SetEnvironmentVariable
+> ```[Environment]::SetEnvironmentVariable``` is similar to setx
+
+### User wide
+
+- Save variable, usnig 'User' as param
+    ```powershell
+    [Environment]::SetEnvironmentVariable('Controls__Url', 'http://localhost:XXXX', 'User')
+    ```
+ 
+- Read variable, usnig 'User' as param
+    ```powershell
+    [Environment]::GetEnvironmentVariable('Controls__Url', 'User')
+    ```
+
+### Machine wide
+
+- Save variable, usnig 'Machine' as param
+    ```powershell
+    [Environment]::SetEnvironmentVariable('Controls__Url', 'http://localhost:XXXX', 'Machine')
+    ```
+ 
+- Read variable, usnig 'User' as param
+    ```powershell
+    [Environment]::GetEnvironmentVariable('Controls__Url', 'Machine')
+    ```
 
 ## Secrets used from the systems and applications
 > Not development related
@@ -142,3 +180,12 @@ Example configure NuGet source using PAToken:
 ```powershell
 dotnet nuget add source --username YOURUSERNAME --password (Get-Secret PAToken -AsPlainText) --store-password-in-clear-text --name github "https://nuget.pkg.github.com/SomeCompany/index.json"
 ```
+
+### Visual Studio Readning Secrets
+
+The Visual Studio must be restarted after adding a new value (not only the external terminal) - so the VS will fetch the latest variables and work with them
+- Because Visual Studio is aware only of the variables that were created/deleted at the moment when the Visual Studio was open.
+
+The variables could be defined also with **:** instead of **__**, both ways are accepted by .NET configuration reader - Example: ```$env:Services:Controls:ServiceClientId```
+
+Global env variables location: **System Properties -> Environment Variables...**
