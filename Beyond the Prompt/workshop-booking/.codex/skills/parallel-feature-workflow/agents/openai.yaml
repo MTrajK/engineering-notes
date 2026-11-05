@@ -1,0 +1,14 @@
+interface:
+  display_name: Parallel Feature Workflow
+  short_description: Plan, implement, and review features in parallel
+  default_prompt: 'Use $parallel-feature-workflow to implement this feature: [describe
+    the requested change].'
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: false
