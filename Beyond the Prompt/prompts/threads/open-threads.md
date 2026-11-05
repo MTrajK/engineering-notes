@@ -1,0 +1,1 @@
+Open three new threads and have each independently explore one controller from the 3 available; report each controller’s responsibilities, key endpoints, dependencies, and relevant tests.
