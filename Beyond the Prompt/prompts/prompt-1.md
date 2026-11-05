@@ -1,7 +1,5 @@
 We are preparing to implement the Workshop Booking API. This task is repository review and implementation planning only.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Review the existing specifications and configuration, resolve the remaining technical decisions, and leave a concrete foundation plan for the next implementation task. Do not scaffold the solution or implement application code yet.

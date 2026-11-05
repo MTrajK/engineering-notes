@@ -1,7 +1,5 @@
 Implement deterministic startup seed data and complete the OpenAPI/Swagger documentation for the Workshop Booking API.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Make the completed baseline easy to demonstrate through Swagger. Starting the application must create a predictable set of useful scenarios; restarting must restore that baseline.

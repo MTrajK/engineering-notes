@@ -1,7 +1,5 @@
 Scaffold the Workshop Booking API solution using the repository’s existing specifications and the technical decisions recorded during the previous review.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Create a minimal, buildable solution with the correct project boundaries and development tooling. Establish the structure for later implementation without implementing business features or shared application infrastructure yet.

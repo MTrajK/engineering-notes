@@ -1,7 +1,5 @@
 Implement the core domain model, SQLite persistence foundation, and isolated test infrastructure for the Workshop Booking API.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Establish the entities, EF Core mappings, database lifecycle, mutation coordination, and testing fixtures needed by the three baseline features. Verify this foundation without implementing feature controllers or application use cases.

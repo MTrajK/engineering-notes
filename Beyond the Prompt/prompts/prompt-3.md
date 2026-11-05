@@ -1,7 +1,5 @@
 Implement the shared application outcomes and HTTP infrastructure for the Workshop Booking API, building on the existing scaffold.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Establish reusable application outcomes, consistent HTTP error handling, JSON/date conventions, and working Swagger UI. Verify this infrastructure without implementing business features or persistence.

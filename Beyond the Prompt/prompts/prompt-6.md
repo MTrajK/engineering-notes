@@ -1,7 +1,5 @@
 Implement the baseline participants feature across the existing application layers, including unit and HTTP integration tests.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Deliver working participant creation, detail, and listing endpoints that satisfy `docs/features/participants.md`. Reuse the existing domain model, persistence infrastructure, application outcomes, HTTP conventions, and test fixtures.

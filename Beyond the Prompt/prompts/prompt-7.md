@@ -1,7 +1,5 @@
 Implement the baseline registrations feature across the existing application layers, including unit and HTTP integration tests.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Deliver registration creation, workshop-filtered listing, and cancellation according to `docs/features/registrations.md`. Preserve capacity, uniqueness, failure precedence, and consistency under competing requests.

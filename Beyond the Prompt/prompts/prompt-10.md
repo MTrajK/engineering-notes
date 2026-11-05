@@ -1,7 +1,5 @@
 Perform the final combined review and presentation rehearsal for the Workshop Booking API. Fix issues within the agreed baseline scope and leave a verified application ready for a baseline commit or tag.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Verify the completed application as a whole: behavior, architecture, maintainability, tests, tooling, documentation, and demo operation.

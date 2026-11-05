@@ -1,7 +1,5 @@
 Audit the baseline acceptance scenarios, address meaningful test gaps, and implement verified unit-coverage enforcement for the Workshop Booking API.
 
-Work directly in the current repository using ordinary Codex capabilities. Do not invoke skills, spawn subagents, create custom-agent definitions, configure hooks, or introduce a multi-agent workflow.
-
 **Goal**
 
 Establish evidence that the baseline behavior satisfies its specifications and that unit tests alone achieve strictly greater than 90% line coverage separately for Domain and Application.
