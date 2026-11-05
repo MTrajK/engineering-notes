@@ -1,1 +1,1 @@
-Add a simple GET /api/workshops/ping endpoint that returns { "status": "ok" }, then let the configured verification hook run and report its result.
+Add a simple GET /api/workshops/ping endpoint that returns { "status": "ok" }.
