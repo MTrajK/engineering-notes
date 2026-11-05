@@ -7,4 +7,5 @@ Collection of my engineering notes, presentations, etc (it's not a code project)
 - [Product-minded Engineer](https://github.com/MTrajK/engineering-notes/tree/main/Product-minded%20Engineer) - Presentation and notes about Product-minded engineer, and why it's needed even more in the age of AI Driven Development.
 - [AI Coding Agents Need Specs Not Vibes](https://github.com/MTrajK/engineering-notes/tree/main/AI%20Coding%20Agents%20Need%20Specs%20Not%20Vibes) - Presentation about practical Spec-Driven Development workflow with Windsurf and GitHub Spec Kit where clear intent and good acceptance criteria is needed.
 - [SDD Workshop](https://github.com/MTrajK/engineering-notes/tree/main/SDD%20Workshop) - Workshop: Practical Spec-Driven Development With Windsurf and GitHub Spec Kit.
+- [Beyond the Prompt](https://github.com/MTrajK/engineering-notes/tree/main/Beyond%20the%20Prompt) - Engineering Your Codex Workflow, this presentation explores how Codex projects, context, instructions, hooks, rules, skills, and sub-agents can work together in software development.
 - [General](https://github.com/MTrajK/engineering-notes/tree/main/General) - General notes are stored here.

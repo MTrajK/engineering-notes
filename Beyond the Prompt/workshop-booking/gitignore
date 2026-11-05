@@ -1,0 +1,56 @@
+# .NET build and intermediate output
+[Bb]in/
+[Oo]bj/
+/artifacts/
+
+# Test results and coverage output
+[Tt]est[Rr]esults/
+coverage/
+coverage-report/
+*.trx
+*.coverage
+*.coveragexml
+coverage.cobertura.xml
+coverage.opencover.xml
+
+# Visual Studio and Rider local state
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.sln.DotSettings.user
+*.slnx.DotSettings.user
+
+# Local environment files; keep sanitized examples under version control
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Optional local ASP.NET Core configuration overrides
+# Keep appsettings.json and appsettings.Development.json tracked and secret-free.
+# These patterns do not configure the application to load the override files.
+appsettings.Local.json
+appsettings.*.Local.json
+
+# Local logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*~
+
+# Operating-system metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Optional local agent worktrees
+/.worktrees/
+
+# Keep source, seed files, docs, and shared project configuration tracked.
+# In particular, do not ignore AGENTS.md, .codex/, .editorconfig,
+# Directory.Build.props, global.json, launchSettings.json, or packages.lock.json.
