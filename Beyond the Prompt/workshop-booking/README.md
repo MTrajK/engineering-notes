@@ -7,12 +7,14 @@ parallel coding agents. These workflows are optional.
 
 ## Project status
 
-The repository is being defined one file at a time. This README describes the
-intended application; the application projects, configuration, seed data, tests,
-and supporting documentation have not been scaffolded or verified yet.
+The solution, shared application outcomes, HTTP error handling, timestamp
+serialization, and Development Swagger infrastructure are implemented. The
+three baseline features, deterministic demo seeding, and OpenAPI documentation are implemented. Unit coverage enforcement is implemented; see docs/testing.md.
+Domain entities, SQLite initialization, and isolated database fixtures are implemented.
 
-Commands below become usable once their corresponding projects exist. Swagger
-paths and the SDK selection must be confirmed during scaffolding.
+The existing root configuration is now active as `.editorconfig` and
+`.gitignore`; `Directory.Build.props`, `AGENTS.md`, and `docs/` remain at the
+repository root.
 
 ## Scope
 
@@ -27,15 +29,32 @@ Feedback and waiting-list features are reserved for later demo exercises. They
 are not part of the initial implementation.
 
 Authentication, caching, external services, and a frontend are outside the
-baseline scope. Swagger UI provides the interactive interface for API requests.
+baseline scope. Development Swagger UI provides the interactive interface; its
+OpenAPI document includes all nine baseline operations.
 
 ## Prerequisites
 
-- .NET 10 SDK: the proposed target for the application.
+- .NET 10 SDK `10.0.302` or a later patch in the same SDK feature band. The
+  selected version is installed and pinned in `global.json`; prereleases are
+  disabled.
+- PowerShell 7 for the coverage gate and its verification checks. Final verification used 7.6.9.
 - Git for version control; worktrees are used only in demos that need them.
 
-The SDK version will be pinned in `global.json` during scaffolding. No external
+The VSTest runner is selected in `global.json`. xUnit uses its MTP-off package
+variant so the .NET 10 SDK runs tests through VSTest, which Coverlet's collector
+requires. Package versions and ownership are recorded in
+[architecture](docs/architecture.md) and [testing](docs/testing.md). No external
 database server or Docker container is required.
+
+## Codex project hooks
+
+This project includes Codex hooks in `.codex/hooks.json` and `.codex/hooks/`.
+Review and allow the project hook before using it:
+
+1. Open `/hooks` in the Codex CLI, or go to **Settings → Hooks** in the desktop app.
+2. Review and trust the project hook. Codex requires trust for project-local
+   hooks, and new or changed hook definitions need review before they run.
+3. Restart Codex if the hook does not appear.
 
 ## Run locally
 
@@ -47,21 +66,22 @@ dotnet build --no-restore
 dotnet run --project src/WorkshopBooking.Api
 ```
 
-Use the listening address printed in the startup output. For a predictable local
-demo address, start the application with explicit development settings:
+The launch profile listens at `http://localhost:5080`. Swagger UI is available
+at [http://localhost:5080/swagger](http://localhost:5080/swagger), and the
+generated document is at
+[http://localhost:5080/swagger/v1/swagger.json](http://localhost:5080/swagger/v1/swagger.json).
+The document includes all nine baseline operations grouped by resource.
+To start without a launch profile, use:
 
 ```bash
 dotnet run --project src/WorkshopBooking.Api --no-launch-profile -- --environment Development --urls http://localhost:5080
 ```
 
-The intended Swagger UI address for that command is
-[http://localhost:5080/swagger](http://localhost:5080/swagger).
-Open it, expand an endpoint, select **Try it out**, and execute a request.
+Swagger UI and OpenAPI middleware are enabled only in Development.
 
 ## Baseline endpoints
 
-These routes are the planned contract. The running application's OpenAPI document
-will describe implemented request and response schemas.
+These routes are implemented; OpenAPI describes their request and response schemas.
 
 | Method | Route | Purpose |
 | --- | --- | --- |
@@ -77,17 +97,35 @@ will describe implemented request and response schemas.
 
 ## Demo data and reset
 
-The application uses EF Core with SQLite in-memory. Its owning connection stays
-open for the application's lifetime. Data is temporary: stopping the process
-discards changes, and starting it again creates and seeds a fresh database.
+Startup creates and seeds an in-memory SQLite database before accepting requests. One captured startup instant defines every seed date. IDs are stable; dates move with each fresh process. User-created records do not survive restart. No endpoint or background job resets the database.
 
-The planned seed scenarios include an upcoming workshop with available seats,
-a full upcoming workshop, and a completed workshop, together with participants
-and registrations. Seed IDs remain stable. Workshop dates are calculated relative
-to one captured startup clock instant so the scenarios remain useful over time.
+| Workshop | Stable ID | Start / end relative to startup | Capacity / registered / free |
+| --- | --- | --- | --- |
+| Practical API Design | `10000000-0000-0000-0000-000000000001` | +3 days / +3 days 2 hours | 4 / 1 / 3 |
+| Testing Together | `10000000-0000-0000-0000-000000000002` | +5 days / +5 days 2 hours | 2 / 2 / 0 |
+| Introduction to SQLite | `10000000-0000-0000-0000-000000000003` | -5 days / -5 days +2 hours | 3 / 1 / 2 |
 
-To reset the demo, stop the process with `Ctrl+C` and run it again. No reset
-endpoint, migration command, or database cleanup step is required for this setup.
+Participants use IDs `20000000-0000-0000-0000-000000000001` (Alex River), `20000000-0000-0000-0000-000000000002` (Blair Meadow), and `20000000-0000-0000-0000-000000000003` (Casey Brook, initially unregistered). Display emails are Alex.River@example.test, Blair.Meadow@example.test and Casey.Brook@example.test.
+
+Registration IDs `30000000-0000-0000-0000-000000000001` through `...0004` belong respectively to available/Alex, full/Alex, full/Blair, completed/Blair. Creation offsets are -1, -2, -1 and -6 days. Historical registrations precede workshop start.
+
+### Swagger walkthrough
+
+1. Run the local command above and open Swagger. Execute GET workshops and GET participants.
+2. Execute GET workshop detail with the Practical API Design ID; observe 3 available seats.
+3. Execute POST registrations with this JSON (also supplied as the schema example):
+
+   ```json
+   {"workshopId":"10000000-0000-0000-0000-000000000001","participantId":"20000000-0000-0000-0000-000000000003"}
+   ```
+
+4. Copy the returned registration ID. Read workshop detail/list again; availability is 2.
+5. Repeat the POST; expect 409 / registration_duplicate.
+6. Change workshopId to `10000000-0000-0000-0000-000000000002`, keeping Casey; expect 409 / workshop_full.
+7. DELETE registrations using the ID returned in step 3. Expect empty 204; detail/list availability returns to 3.
+8. Stop the process with Ctrl+C and rerun the local command. List records again: seed IDs and baseline counts are restored, and dates are recalculated from the new startup instant.
+
+OpenAPI examples describe request shapes; they are not guarantees of current stored state after mutations. Workshop-create examples use dates seven days after document generation; replace them with future explicit-offset dates if the document has been open for a long time. Input timestamps require Z or a numeric offset; UTC output preserves seven fractional digits. Ordinary integration fixtures disable demo seeding; dedicated seeded tests opt in with a controlled clock.
 
 ## Tests and code checks
 
@@ -104,18 +142,23 @@ dotnet test tests/WorkshopBooking.IntegrationTests
 
 # Run all tests
 dotnet test
+
+# Enforce unit-only coverage for Domain and Application
+pwsh -NoProfile -File scripts/Test-UnitCoverage.ps1
+
+# Verify coverage-gate failure and threshold logic
+pwsh -NoProfile -File scripts/Test-CoverageGate.ps1
 ```
 
 Use `dotnet format` to apply supported automatic fixes.
 
-Unit tests cover domain rules and application use cases. Integration tests call
-the API through `WebApplicationFactory` and exercise the HTTP pipeline, business
-logic, and real SQLite persistence with isolated test data.
+The unit suite covers Domain and Application behavior. The integration suite uses
+real SQLite and isolated test hosts for all baseline features, shared HTTP behavior,
+persistence, seeding, OpenAPI and concurrency. Test-only failure controllers are
+registered only by the integration fixture.
 
 Unit tests alone must achieve **over 90% line coverage separately for Domain and
-Application**. Coverage tooling, exclusions, and the command that enforces this
-threshold will be documented in `docs/testing.md` when configured. `dotnet test`
-alone must not be treated as evidence that the coverage requirement was checked.
+Application**. The verified unit-only enforcing command is `pwsh -NoProfile -File scripts/Test-UnitCoverage.ps1` (PowerShell 7 required). It collects fresh OpenCover data and rejects either assembly at or below 90%. See [testing](docs/testing.md) and the [acceptance audit](docs/acceptance-audit.md). `dotnet test` alone does not enforce coverage.
 
 ## Solution layout
 
@@ -157,9 +200,11 @@ required by the selected workflow. Complete each task's assigned scope without
 assuming an unassigned later stage will finish it. Delegated tasks report their
 scoped checks; the combined application still requires full verification.
 
+The final [baseline review and rehearsal](docs/baseline-review.md) records readiness evidence and later-demo coordination points.
+
 ## Supporting documentation
 
-The following documents are planned and will be created separately:
+The following supporting documents are present at the repository root:
 
 - `docs/architecture.md`: dependency boundaries, persistence lifecycle, design decisions.
 - `docs/api-conventions.md`: validation, HTTP errors, dates, and ordering conventions.
@@ -169,7 +214,7 @@ The following documents are planned and will be created separately:
 
 ## Troubleshooting
 
-- **Project not found:** confirm scaffolding is complete and run from the repository root.
+- **Project not found:** run from the repository root and confirm the project path.
 - **SDK mismatch:** check `dotnet --info` against `global.json` once it is present.
 - **Port already in use:** stop the other process or choose another port with `--urls`.
 - **Swagger returns 404:** use Development and confirm Swagger UI has been configured.

@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.14" />
+    <ProjectReference Include="..\WorkshopBooking.Application\WorkshopBooking.Application.csproj" />
+    <ProjectReference Include="..\WorkshopBooking.Domain\WorkshopBooking.Domain.csproj" />
+  </ItemGroup>
+</Project>

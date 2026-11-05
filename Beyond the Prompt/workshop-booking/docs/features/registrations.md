@@ -2,7 +2,7 @@
 
 ## Status and purpose
 
-Baseline feature specification; implementation and tests are pending.
+Registration creation, workshop-filtered listing and cancellation are implemented and verified against REG-001 through REG-033.
 Register an existing participant for an existing workshop, list its registrations,
 and cancel a registration while preserving workshop capacity and uniqueness.
 
@@ -191,3 +191,5 @@ scenario WKS-024 is satisfied by this integrated flow.
 The final combined implementation must satisfy the shared test and coverage
 requirements. Keep specification, tests, and delivered behavior aligned when
 requirements change; this document assigns no particular agent roles or workflow.
+
+Local entity construction and normalization rules are implemented and unit tested. Persistence constraints are verified independently; registration use cases and HTTP acceptance scenarios are implemented.

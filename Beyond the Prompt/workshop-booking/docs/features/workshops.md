@@ -2,9 +2,9 @@
 
 ## Status and purpose
 
-Baseline feature specification; implementation and tests are pending.
+Workshop creation, detail and listing are implemented with unit and SQLite HTTP integration tests. WKS-024 is implemented through real registration and cancellation endpoints.
 Create workshops and let callers discover their schedule, capacity, and available
-seats. This document defines intended behavior, not evidence of delivered code.
+seats. The acceptance scenarios below define the delivered contract.
 
 Field names and limits below are the selected baseline contract. Shared JSON,
 date, validation, and problem-response conventions are defined in
@@ -155,3 +155,5 @@ time and isolated SQLite data; follow `testing.md` for coverage requirements.
 
 Keep the specification, tests, and delivered behavior aligned as requirements
 change. Do not treat a passing happy-path demo as completion of these scenarios.
+
+Local entity construction and normalization rules are implemented and unit tested. Persistence constraints are verified independently; workshop application use cases and HTTP acceptance scenarios are implemented, including WKS-024.

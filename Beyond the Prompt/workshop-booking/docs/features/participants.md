@@ -2,7 +2,7 @@
 
 ## Status and purpose
 
-Baseline feature specification; implementation and tests are pending.
+Participant creation, detail and listing are implemented and verified against PAR-001 through PAR-026.
 Create participants and retrieve their identity and contact details so other
 features can refer to them by ID. A participant is a stored domain record,
 not an authenticated account.
@@ -162,3 +162,5 @@ stored effects, not only response status assertions.
 
 Keep this specification, tests, and delivered behavior aligned as requirements
 change. Use the shared testing document for isolation and coverage requirements.
+
+Local entity construction and normalization rules are implemented and unit tested. Persistence constraints are verified independently; participant use cases and HTTP acceptance scenarios are implemented.

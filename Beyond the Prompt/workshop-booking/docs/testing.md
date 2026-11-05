@@ -2,14 +2,27 @@
 
 ## Status and scope
 
-This document defines the intended testing approach for the Workshop Booking API.
-Application projects and test infrastructure have not been scaffolded or verified
-yet. Commands below require the corresponding projects and packages.
+This document defines the testing approach for the Workshop Booking API. The
+unit and integration suites now contain tests for Application outcomes and
+shared HTTP infrastructure, domain invariants and SQLite persistence. Isolated
+database fixtures, baseline feature acceptance tests and verified unit coverage
+enforcement are implemented. See [the acceptance audit](acceptance-audit.md).
 
-Use xUnit for both test projects and `WebApplicationFactory<Program>` for HTTP
-integration tests. Configure unit coverage with Coverlet's collector and a
-repository-owned coverage gate during scaffolding. Pin compatible package
-versions then; this document does not claim those tools are already installed.
+Use xUnit v3 with its VSTest adapter for both test projects and
+`WebApplicationFactory<Program>` for HTTP integration tests. Keep `dotnet test`
+on the VSTest runner because Coverlet's VSTest collector does not support
+Microsoft Testing Platform v2. The package family is `xunit.v3.mtp-off`,
+`xunit.runner.visualstudio`, `Microsoft.NET.Test.Sdk`,
+`Microsoft.AspNetCore.Mvc.Testing`, and `coverlet.collector`. As checked against
+NuGet on 2026-11-05, compatible stable versions are xunit.v3.mtp-off 4.0.2,
+xunit.runner.visualstudio 4.0.1, Microsoft.NET.Test.Sdk 18.11.0,
+Microsoft.AspNetCore.Mvc.Testing 10.0.14, and coverlet.collector 10.1.0. Select
+the VSTest runner in `global.json`; `xunit.v3.mtp-off` disables MTP while
+retaining xUnit v3 support through the VSTest adapter. The plain xunit.v3 4
+package selects MTP v2, which the .NET 10 SDK rejects under VSTest. Coverlet
+documents that its [collector is incompatible with MTP v2](https://www.nuget.org/packages/coverlet.collector/10.1.0).
+These package versions restore successfully. The unit project
+also includes the Coverlet collector; coverage collection has not been run.
 
 ## Test boundaries
 
@@ -51,6 +64,14 @@ Separate databases allow independent tests to run in parallel. A shared mutable
 fixture requires local serialization, not disabling parallelism for every test.
 Within one concurrency test, preserve simultaneous requests to the same database
 so the test exercises the application's synchronization strategy.
+For deterministic contention, use a test-controlled mutation coordinator with
+signals for acquired/waiting leases. Hold the first lease, start all competing
+requests, await confirmation that they are waiting, then release the lease.
+Bound each wait with a timeout and release/dispose in `finally`; do not use
+`Task.Delay`, sleeps, or an external test lock that prevents requests from
+reaching the application coordinator. The production mutation coordinator and
+shared-connection I/O guard are process-local; each test factory owns a separate
+connection and coordinator.
 
 ## Behavior to cover
 
@@ -134,15 +155,30 @@ and compare covered lines to valid lines without rounding. Fail on a missing or
 empty report, a missing assembly, zero measurable lines, a failed test run, or
 either assembly at or below the threshold. Never reuse stale coverage output.
 
+Use PowerShell 7 with the pinned .NET 10 SDK, VSTest and coverlet.collector 10.1.0. Run from the repository root:
+
+```powershell
+pwsh -NoProfile -File scripts/Test-UnitCoverage.ps1
+pwsh -NoProfile -File scripts/Test-CoverageGate.ps1
+```
+
+The first command is the enforcing gate; the second independently verifies its logic with 19 synthetic checks. scripts/Coverage.psm1 owns report validation and orchestration. The gate runs only tests/WorkshopBooking.UnitTests with the OpenCover collector. It uses a new GUID directory under artifacts/coverage/unit per invocation, prints that location and never reads sibling/stale directories or deletes unrelated artifacts. Integration tests remain a separate command and cannot improve these measurements.
+
+Every coverage.opencover.xml under the current run is parsed with DTDs prohibited. Each expected assembly is explicitly matched by ModuleName. Sequence points are expanded from sl through el and deduplicated by full source path and line, across methods/modules/reports; a line is covered when any corresponding visit count is positive. File IDs are local to each module, not global source identities. The gate compares raw counts with decimal integer arithmetic: covered * 100 > valid * 90. Printed percentages do not decide compliance.
+
+Missing/empty/malformed/unusable reports, malformed sequence points or file maps, missing assemblies and zero measurable lines fail. A failing unit-test process fails even if reports exist. Per-assembly counts and percentages are printed before threshold rejection. Multiple reports are merged by source line without double counting. Exactly 90% fails, including when the other assembly makes a combined average pass. PowerShell exits nonzero on every rejected run.
+
+No source-code exclusions were added. Compiler-generated artifacts are governed by the collector defaults; ordinary entities, policies, services, validation and outcomes are measured. Both required assemblies are measurable. Inspect the printed run directory's XML (Files, Methods, SequencePoints and BranchPoints) to locate vc=0 points. Branch coverage is informative and has no numeric gate.
+
 Exclude generated code only through explicit, justified configuration. Do not
 exclude ordinary business code, remove tests, weaken assertions, or add tests
 that merely execute lines to reach the target. Inspect uncovered branches and
 missing acceptance scenarios; branch coverage is useful but has no separate
 numeric threshold in the baseline.
 
-## Commands and scaffolding checklist
+## Verification commands
 
-Run from the repository root after scaffolding:
+Run from the repository root:
 
 ```bash
 dotnet restore
@@ -151,25 +187,18 @@ dotnet test tests/WorkshopBooking.UnitTests
 dotnet test tests/WorkshopBooking.IntegrationTests
 dotnet test
 dotnet format --verify-no-changes
+pwsh -NoProfile -File scripts/Test-CoverageGate.ps1
+pwsh -NoProfile -File scripts/Test-UnitCoverage.ps1
 ```
 
-With `coverlet.collector` configured in the unit-test project, the intended
-collection command is:
+With `coverlet.collector` configured in the unit-test project, collect OpenCover
+data with:
 
 ```bash
-dotnet test tests/WorkshopBooking.UnitTests --collect:"XPlat Code Coverage" --results-directory artifacts/coverage/unit
+dotnet test tests/WorkshopBooking.UnitTests --collect:"XPlat Code Coverage" --results-directory artifacts/coverage/unit -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
 ```
 
-This command collects coverage; it does **not** enforce the threshold. During
-scaffolding, implement and record one exact gate command here that clears stale
-output, runs unit tests with coverage, checks both assemblies, and returns a
-nonzero exit code on failure. Verify the gate with below-threshold, exactly-90%,
-missing-report, and passing inputs. Coverage enforcement remains pending until
-that command exists and has been verified; `dotnet test` alone is insufficient.
-
-Keep artifact output outside source control. Record the chosen test runner,
-collector compatibility, coverage report location, and any reset-fixture procedure
-here when configured. Do not invent a working command for an absent script.
+This collector-only command is for inspection; it does not enforce the threshold. Use the enforcing command above for completion. All reports live under ignored artifacts.
 
 ## Test-first work and completion
 
@@ -189,3 +218,13 @@ completed application requires formatting, build, both test suites, and the
 coverage gate to pass. Report commands actually run and checks that remain
 unverified. Rerun affected checks after fixes; run final full verification on the
 combined result after integrating concurrent changes.
+
+## Database fixtures and acceptance evidence
+
+InfrastructureTestApplicationFactory creates an isolated SQLite owner and ControlledTimeProvider before startup. Normal fixtures disable seeding; dedicated DemoSeedTests opt in. WithDatabaseAsync creates a fresh scope/context and holds the database I/O guard for setup or readback. Do not nest it or invoke a guarded repository inside its callback. Dispose factories, scopes, contexts and clients; connection ownership is tested for both synchronous and asynchronous factory disposal.
+
+The optional observing coordinator forwards acquisition to the real MutationCoordinator. Contention tests wait for both HTTP requests at the production gate using bounded TaskCompletionSource coordination, then release the held lease. No sleeps or test-side request serialization authorize writes. They verify final-seat, duplicate, cancellation/mixed outcomes, queued time capture, fresh persisted counts and HTTP availability.
+
+See [acceptance-audit.md](acceptance-audit.md) for all 86 stable IDs and the reviewed assertions. PersistenceTests covers constraints, UTC ticks, Unicode keys, resource lifetimes and isolation. DemoSeedTests covers exact IDs/offsets, one startup instant, seed integrity, no reseeding after mutations, fresh-host restoration and OpenAPI contracts. HttpInfrastructureTests covers shared errors, JSON/date handling, Swagger environment and absence of test-only controllers in the normal host.
+
+The verified gate measures Domain 91/91 lines (100%) and Application 200/202 (99.0099%). The remaining uncovered lines defend internal Outcome construction against states public factories cannot create. No coverage exclusions or artificial reflection-only tests were added. Final completion still requires rerunning the gate on the current tree.

@@ -1,0 +1,17 @@
+{
+  "description": "Run Workshop Booking verification before Codex finishes a turn.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File \"$(git rev-parse --show-toplevel)/.codex/hooks/verify.ps1\"",
+            "timeout": 1800,
+            "statusMessage": "Running project verification"
+          }
+        ]
+      }
+    ]
+  }
+}

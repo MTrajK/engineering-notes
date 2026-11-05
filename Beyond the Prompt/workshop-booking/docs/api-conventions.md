@@ -2,9 +2,10 @@
 
 ## Status and scope
 
-This document defines the intended HTTP conventions for the Workshop Booking API.
-Apply them during scaffolding; they have not yet been verified against a running
-application. They apply to baseline endpoints and later feature extensions.
+This document defines the HTTP conventions for the Workshop Booking API.
+Shared problem handling, JSON settings, and timestamp serialization are
+implemented and verified by HTTP infrastructure tests. Business endpoint
+contracts apply to the implemented baseline and later extensions.
 
 Feature documents in `features/<feature>.md` define business rules and acceptance
 scenarios. This file defines how those outcomes are represented over HTTP.
@@ -13,7 +14,7 @@ The running OpenAPI document describes implemented routes and DTO schemas.
 ## Routes and identifiers
 
 - Use controller-based endpoints under `/api` with lowercase resource names.
-- Keep the planned routes in [README](../README.md). Do not introduce URL
+- Keep the baseline routes in [README](../README.md). Do not introduce URL
   versioning, nested route alternatives, or extra endpoints without a requirement.
 - Use server-generated, non-empty GUID identifiers. Seed identifiers remain
   stable across restarts; newly created resources receive new identifiers.
@@ -144,10 +145,19 @@ its format using one shared application policy, then derive a lookup key with
 database constraint. This API intentionally treats the whole address as
 case-insensitive. Do not apply provider-specific dot or plus-address rewriting.
 
+Workshop topic filtering follows the same invariant-key approach: trim the
+filter, derive an uppercase-invariant exact-match key, and compare with the
+persisted key using binary equality. Do not rely on SQLite `NOCASE`, which does
+not provide the required non-ASCII case folding. Return the original trimmed
+topic value. Keep normalized topic and email keys out of response DTOs.
+
 Represent instants with `DateTimeOffset` in application contracts. Accept ISO
 8601 timestamps with an explicit `Z` or numeric offset and normalize responses
 to UTC with `Z`. Reject timestamps without an offset; do not infer server-local
 time. Configure binding and serialization explicitly to enforce this contract.
+Use a dedicated JSON converter or equivalent strict input parser so values
+without an explicit offset cannot silently inherit a default offset. Keep output
+serialization normalized to UTC.
 
 Business checks obtain time from injected `TimeProvider`, capturing one instant
 per operation. Feature documents define exact start/end comparisons; tests use
@@ -173,8 +183,19 @@ offset. Display-time-zone conversion is outside the baseline scope.
 
 Configure interactive Swagger UI for local development. Describe request and
 response DTOs, required parameters, success statuses, and applicable problem
-responses. Document `Location` where emitted. Avoid exposing EF entities as
-OpenAPI schemas.
+responses. The public `ApiProblemDetails` type is the reusable response schema;
+feature actions can reference it with `ProducesResponseType` metadata. The
+production document includes workshop create, detail and list operations. Test-only controllers
+exercise problem schema/response metadata in the integration host. Document
+`Location` where emitted. Avoid exposing EF entities as OpenAPI schemas. Use
+controller-based API conventions and one shared problem
+mapping path: `[ApiController]` automatic model-state failures are converted by
+the invalid-model-state response factory; application outcomes map centrally;
+unexpected exceptions map through exception middleware; status-code pages cover
+unmatched routes and framework transport failures. Preserve `Allow` on `405`
+and use `415` for unsupported media types. The API owns error DTOs and field-name
+translation. Enable Swagger/OpenAPI and Swagger UI only in Development; do not
+add an external API-versioning package or custom success envelope.
 
 Integration tests verify HTTP status, content type, relevant headers, response
 shape, and stored effects for every endpoint. Cover automatic validation and
@@ -182,5 +203,7 @@ recognized database conflicts as well as controller-generated outcomes. Avoid
 asserting exact human-readable messages, generated IDs, or trace identifiers.
 
 See [architecture](architecture.md) for dependency and persistence boundaries.
-`testing.md` and `features/<feature>.md` will provide detailed test guidance and
-business acceptance scenarios as those documents are created.
+`testing.md` and `features/<feature>.md` provide test guidance and business
+acceptance scenarios for the implementation.
+
+BaselineOpenApiFilter and DemoSchemaFilter document the nine operations, controller resource tags, trimmed field limits, required filters, Location headers and application/problem+json. Registration has no GET-by-ID route. Schema examples are illustrative; registration examples refer to fresh demo seed IDs. Workshop example dates are seven days after document generation and must remain future dates when executed.

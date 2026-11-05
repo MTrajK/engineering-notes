@@ -6,7 +6,7 @@ These are project-specific design and review guidelines for the Workshop Booking
 API. They complement the shared constraints in [AGENTS.md](../AGENTS.md), the
 [architecture](architecture.md), [API conventions](api-conventions.md), and
 [testing guidance](testing.md). They describe intended implementation choices;
-application code and automated configuration have not been scaffolded yet.
+baseline application behavior is implemented.
 
 Use this document during final review of code changes by default, and when
 explicitly assigned code review. A selected workflow, skill, or custom-agent
@@ -157,7 +157,7 @@ or architecture, resolve it against the relevant specification before changing i
 - Run the checks appropriate to the final changes. Completed application changes
   require format verification, build, both test suites, and the coverage gate.
 - Report concrete unresolved issues and checks actually run. Distinguish verified
-  results from planned tooling; coverage enforcement is pending until scaffolded.
+  results from planned tooling; coverage enforcement is verified by the documented gate.
 
 Do not add features, packages, or layers merely to satisfy a personal style
 preference. The review should leave the demo easier to understand and extend.

@@ -1,0 +1,27 @@
+# Block git reset commands.
+prefix_rule(
+    pattern = ["git", "reset"],
+    decision = "forbidden",
+    justification = "Do not run git reset. Use a safer, explicitly reviewed alternative.",
+)
+
+# Ask before adding changes.
+prefix_rule(
+    pattern = ["git", "add"],
+    decision = "prompt",
+    justification = "Ask before adding changes.",
+)
+
+# Ask before creating commits.
+prefix_rule(
+    pattern = ["git", "commit"],
+    decision = "prompt",
+    justification = "Ask before creating a commit.",
+)
+
+# Ask before pushing to a remote.
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Ask before pushing to a remote.",
+)

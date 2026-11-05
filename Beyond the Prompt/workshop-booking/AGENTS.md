@@ -69,10 +69,12 @@ dotnet format --verify-no-changes
 dotnet test tests/WorkshopBooking.UnitTests
 dotnet test tests/WorkshopBooking.IntegrationTests
 dotnet test
+pwsh -NoProfile -File scripts/Test-UnitCoverage.ps1
+pwsh -NoProfile -File scripts/Test-CoverageGate.ps1
 ```
 
-Use `dotnet format` to apply supported fixes. The coverage collection and enforcing
-command must be established in `docs/testing.md` when test tooling is configured.
+Use `dotnet format` to apply supported fixes. The unit-only enforcing command and its verification checks are documented in
+`docs/testing.md`; PowerShell 7 is required.
 
 ## Completion
 
