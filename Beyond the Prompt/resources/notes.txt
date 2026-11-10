@@ -1,0 +1,151 @@
+Title:
+Beyond the Prompt: Engineering Your Codex Workflow
+
+Description:
+This presentation explores how Codex projects, context, instructions, hooks, rules, skills, and sub-agents can work together in software development. Through a test first implementation demo, you’ll see several sub-agents collaborate to plan a feature, write tests, implement and review the change, and verify the result.
+
+---------------
+
+Reseting the Context
+
+- Does a new thread (conversation) mean losing all context?
+That is not always a bad thing. Often you need to drop irrelevant context and carry forward only what matters for this task.
+
+https://codexhandbook.com/en/guide/foundations/tokens-context-and-compaction/
+- Compaction
+The context is compacted after some time (zipped), and there is a sweet point for the context to work the best - around 200k-400k tokens
+So because of this, maybe it is best for each new task to start a new thread!
+And all the important things to be written in the agents configuration files (agents md), documentation (like readme, or separate docs folder with specific documentation).
+
+Hallucinations and drift are often context prblem too!! Because the agents are bloated with lot of context, and lot of compacted context and that is causing missunderstanding.
+	- Analogy: everything the agent think is written on the wall - so the more writtings ends up on the wall it just start to overhelmed (so when it compact, it is erasing some of them and summarizing it - so it's just a simple compression)
+So something this can be "fixed" with sub-agents, because they will have their own context, not poluted with lot of not needed context - and care only about specific things (not get confused about lot of different things).
+	- so it's important the agent to not load bunch of not needed things about that specific task because they will get confused
+
+---------------
+
+Skills vs custom sub-agents
+
+- skill is a repeatable task/process/instruction that you can invoke
+- skill is like instruction playbook, to the the things in some order (instruction prompt that could have an input)
+
+---------------
+
+Review skills weekly?
+
+New models come and if the skill is too primitive, it will be counter-intuitive for a really smart model to use a stupid skill.
+
+---------------
+
+Sub-agents orchestration
+
+1. Part of the prompt
+2. Part of the AGENTS.md (for a specfic type of work)
+3. Part of a specific reusable skill (for some repeatable behaviour)
+
+---------------
+
+Goals
+
+* used for loong run tasks - several hours - whole day
+* not used for well defined prompts (with verification steps, and all the other tech details) that will be executed in several minutes
+
+---------------
+
+Instructions
+
+- Put the instruction where they apply (the whole repo could have multiple projects, domains, etc, each of them could have separate AGENTS.md)
+- Keep rules short. Link to plans, docs, and tests.
+- The agents md should not be more than 300 lines
+
+* hooks and rules won't be written here (these instructions are not DETERMINISTIC)
+
+---------------
+
+Examples
+
+Hooks
+
+- We want DETERMINISTIC pre model execution
+	* git fetch and git pull if new changes remote
+- We want DETERMINISTIC post model execution
+	* run npm tests, linter, etc
+
+Rules
+
+- We want DETERMINISTIC restrictions for some commands, like:
+	* git reset - block always
+	* git push - ask first 
+
+---------------
+
+Using AI coding agents (harnesses)
+1. Most Important Skill: Clear communication and precise thinking - explain exactly to the AI what you want and what’s important.
+2. Create a Good Environment: Clean codebases and tests are crucial (“garbage in, garbage out”); specifications that focus solely on theory without considering code often fail.
+3. Uncover Unknown Gaps: Be aware of “unknown unknowns - by having the AI interview you before it builds anything.
+4. Trust Ladder: Don’t trust blindl - start small, monitor closely, and only gradually grant more autonomy.
+5. Delegate routine tasks: Use AI primarily for boring, repetitive tasks so you can focus on what matters most.
+
+---------------
+
+Random notes
+
+1. The best time to be a software developer! Now I'm feeling almighty, because I can do everything I know in several days, now I'm doing things x100 faster.
+2. The most important things now are these two:
+	- being engineer (not programmer or code writer)
+		* so you'll write great technical instructions that are following the best engineering practices
+	- being product minded 
+		* so you'll write great product instructions that will be solving the users needs and problems
+3. Models & harness are getting really better, close to perfect - BUT - they will never be able to read your mind!!!!
+- you're the one that will need to think what to build and how to build. You're the one that will need to think about the product decissions/trade offs and about tech decissions/trade offs. To do that you need lot of knowledge.
+4. The code writer is dead, we must adapt to be a product minded engineers that will work multiple positions: product owner, business analyst, customer support, architect, full stack software developer (db, backend, frontend), qa/tester, dev ops, security expert, etc... - okay, let's be honest, noone can have a detailed knowledge of all these roles, but the more you know (T shaped engineer, the basics of most of them, the details of 2-3 of them) the more you'll be needed/wanted.
+5. Today: creating software now is soo addictive, there are days where I'll wake up at 6 in the morning and creating software till the 3 in the morining. I really enjoy, because I feel almighty.
+6. The problem: many clients or organizations are still not adapting the AI, or many clients or organizations are using AI but their way of working is not adapted to the AI, they are not moving fast - so in that case the AI development doesn't make senese.
+7. The lie: the AI will do everything and the developer will just press enter. Wrong. With AI we'll have much more to do, 8 hours won't be enough, because now all the ideas will be doable.
+8. Future: the software development/creation will be (it is) more accessable, that means we'll need more software, that means we'll need more software developers (not code writers, engineers, product, someone that will lead the software from the begining till the end).
+9. The future are the generalist / t-shape 
+	- but in engineering that is someone that knows .net and also javascript - no, not that kind of generalists, a level up - Like good in engineering, but also good in product and design / multi-disciplinary.
+10. The code writing is solved. In the future writing code will be like knowing microsoft office (an essential skill) - but all the other knowledge (like the engineering, domain, etc) will be important (like now, why to use microsoft office if you don't have any knowledge).
+Analogy with the year 1400 when the printing machine was invented, after inventing the printing machine in the next 50 years was produced more literature than in the previous 1000 years. 
+11. Even the LLMs and the tools around them (the AI agents / harness) are x100 more powerfull, they will still need someone to lead them, to give them the ideas, to give them problems to solve.
+12. PhD on duty: Think of the Ai agent as the most smart person in the world, as PhD in computer science. In order to get great results with that kind of person you'll need to discuss about smart things, you will need to request from him to do the best practices you will need to lead him to implement some smart solutions. In order to do that you'll need to have big knowledge, so again the knowledge is too important, if you discuss stupid things with the smartest person in the world, you will get the best solution for those requested stupid things.
+13. Experience and knowledge will always matter: Today the knowledge and experience to build a software end to end is priceless, because you could lead the Ai agent to build the best software and fastest. And for sure, knowing how to understand the users or the domain needs.
+14. Don't use the AI as google search replacement.
+Invest into your own setup, your own environment.
+Utilize all the tools that are available to build better automation, to build an agentic engineer.
+15. DDD - use/create the ubiquitous language (between you and agent)
+
+Using AI coding agents (harnesses)
+1. Most Important Skill: Clear communication and precise thinking - explain exactly to the AI what you want and what’s important.
+2. Create a Good Environment: Clean codebases and tests are crucial (“garbage in, garbage out”); specifications that focus solely on theory without considering code often fail.
+3. Uncover Unknown Gaps: Be aware of “unknown unknowns - by having the AI interview you before it builds anything.
+4. Trust Ladder: Don’t trust blindl - start small, monitor closely, and only gradually grant more autonomy.
+5. Delegate routine tasks: Use AI primarily for boring, repetitive tasks so you can focus on what matters most.
+
+---------------
+
+Videos
+
+GREAT PRESENTATION: AI Writes the Code. So What's Left for Engineers?
+https://www.youtube.com/watch?v=kspZP5BgkEU
+
+Reviewing the specifications (not the code - using agents and human)
+https://www.youtube.com/watch?v=xi1AY-G3Ycc
+
+Reviewing the code
+https://www.youtube.com/watch?v=_mi3alkqy4s
+
+Specs are the new code
+https://www.youtube.com/watch?v=8rABwKRsec4
+
+Anthropic's Boris Cherny: Why Coding Is Solved, and What Comes Next
+https://www.youtube.com/watch?v=SlGRN8jh2RI
+
+Andrej Karpathy: From Vibe Coding to Agentic Engineering
+https://www.youtube.com/watch?v=96jN2OCOfLs
+
+Fixing the PR Bottleneck
+https://www.youtube.com/watch?v=LlgiOCmFG_w
+
+The Most Valuable Skill to Learn in the Age of AI
+https://www.youtube.com/watch?v=Z8lf5oWKfj0

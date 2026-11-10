@@ -1,0 +1,25 @@
+Similar courses to:
+Stanford University - CS146S: The Modern Software Developer
+https://themodernsoftware.dev/
+
+_______________________
+
+Carnegie Mellon — 17-214/514: Agentic Software Development
+https://cmu-17-214.github.io/f2026/
+https://github.com/CMU-17-214/f2026/tree/main
+ - too engineering course
+
+_______________________
+
+Penn engineering - CIS 3990 · Fall 2026: Software Development with AI Agents
+https://agent-p.org/courses/cis-3990-001-fall-2026
+
+_______________________
+
+University of Texas - CS 378 Agentic Software Engineering
+https://www.cs.utexas.edu/~witchel/378AC/index.html
+
+_______________________
+
+University of Michigan - Applied Agentic Software Engineering
+https://eecs498-aase.github.io/index.html
